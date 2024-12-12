@@ -32,6 +32,20 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
+      ],
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "../assets/fonts/Tantor.ttf"
+          ]
+        }
+      ],
+      [
+        "expo-asset",
+        {
+          "assets": ["./assets/images/Digital Fashion Background Removed.png"]
+        }
       ]
     ],
     "experiments": {
