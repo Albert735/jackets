@@ -10,6 +10,7 @@ const backgroundImage = require("../assets/images/blujacket Background Removed.p
 export default function index() {
   return (
     <SafeAreaView className="flex-1 bg-[#02196F]">
+      <StatusBar barStyle="light-content" />
       <View className="flex flex-col items-center justify-start ">
         <Text
           style={{ fontFamily: "Modak" }}
@@ -24,8 +25,6 @@ export default function index() {
           Jacket
         </Text>
       </View>
-
-      <StatusBar barStyle="light-content" />
       <ImageBackground
         source={backgroundImage}
         resizeMode="contain"

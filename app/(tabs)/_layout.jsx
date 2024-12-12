@@ -1,10 +1,15 @@
 import { View, Text } from "react-native";
 import React from "react";
 import { Tabs } from "expo-router";
+import TabBar from "../../components/TabBar";
+// import { BlurView } from 'expo-blur';
+
 
 export default function _layout() {
   return (
-    <Tabs>
+    <Tabs
+      tabBar={(prop) => <TabBar {...prop} />}
+    >
       <Tabs.Screen
         name="home/index"
         options={{
