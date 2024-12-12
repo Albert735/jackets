@@ -45,7 +45,7 @@ export default function index() {
             <View className="w-full">
               <Link href="/home" asChild>
                 <TouchableOpacity className="text-white bg-[#3666AB] rounded-full text-[1.5rem]  Tantor w-full">
-                  <Text className="text-center text-[#b4caea] text-[1.5rem] Tantor font-bold py-7">
+                  <Text className="text-center text-[#ccdcf4] text-[1.5rem] Tantor font-bold py-7">
                     Quick Shop Access
                   </Text>
                 </TouchableOpacity>
