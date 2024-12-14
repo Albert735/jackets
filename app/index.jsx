@@ -5,6 +5,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Link } from "expo-router";
 import { TouchableOpacity } from "react-native";
 
+
+
 const backgroundImage = require("../assets/images/blujacket Background Removed.png");
 
 export default function index() {

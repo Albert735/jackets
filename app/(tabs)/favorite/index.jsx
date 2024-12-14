@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Favorite() {
   return (
-    <View>
+    <View className="flex-1 bg-[#000000]">
       <Text>Favorite</Text>
     </View>
   );

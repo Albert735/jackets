@@ -1,29 +1,29 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Platform, StyleSheet } from "react-native";
 import { useLinkBuilder, useTheme } from "@react-navigation/native";
-import { PlatformPressable } from "@react-navigation/elements";
-import { BlurView } from "expo-blur";
-import { Octicons, Feather } from "@expo/vector-icons";
+import { Text, PlatformPressable } from "@react-navigation/elements";
+import Octicons from "@expo/vector-icons/Octicons";
+// import Octicons from "@expo/vector-icons/Octicons";
+import Feather from "@expo/vector-icons/Feather";
 
-const TabBar = ({ state, descriptors, navigation }) => {
+function MyTabBar({ state, descriptors, navigation }) {
   const { colors } = useTheme();
   const { buildHref } = useLinkBuilder();
 
   const icons = {
-    Home: (props) => <Octicons name="home" size={24} {...props} />,
-    Cart: (props) => <Feather name="shopping-cart" size={24} {...props} />,
-    Search: (props) => <Octicons name="search" size={24} {...props} />,
-    Favorite: (props) => <Octicons name="heart" size={24} {...props} />,
+    home: (props) => <Octicons name="home" size={26} {...props} />,
+    cart: (props) => <Feather name="shopping-cart" size={26} {...props} />,
+    favorite: (props) => <Octicons name="heart" size={26} {...props} />,
+    search: (props) => <Octicons name="search" size={26} {...props} />,
   };
 
   return (
-    <BlurView intensity={90} tint="light" style={styles.tabBar}>
+    <View style={styles.tabBar}>
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
         const label = options.tabBarLabel || options.title || route.name;
         const isFocused = state.index === index;
 
-        const handlePress = () => {
+        const onPress = () => {
           const event = navigation.emit({
             type: "tabPress",
             target: route.key,
@@ -35,71 +35,91 @@ const TabBar = ({ state, descriptors, navigation }) => {
           }
         };
 
-        const handleLongPress = () => {
+        const onLongPress = () => {
           navigation.emit({
             type: "tabLongPress",
             target: route.key,
           });
         };
 
-        const iconColor = isFocused ? "white" : "black";
+        const normalizedRouteName = route.name.replace("/index", ""); // ✅ Added normalization for `/index`
+        const IconComponent = icons[normalizedRouteName];
+
+        if (!IconComponent) {
+          console.warn(`No icon defined for route: ${route.name}`); // ✅ Added warning for undefined icons
+        }
 
         return (
           <PlatformPressable
-            key={route.name}
+            key={route.key}
             href={buildHref(route.name, route.params)}
             accessibilityState={isFocused ? { selected: true } : {}}
             accessibilityLabel={options.tabBarAccessibilityLabel}
             testID={options.tabBarButtonTestID}
-            onPress={handlePress}
-            onLongPress={handleLongPress}
+            onPress={onPress}
+            onLongPress={onLongPress}
             style={[styles.tabItem, isFocused && styles.activeTab]}
           >
-            {icons[route.name] && icons[route.name]({ color: iconColor })}
-            <Text style={[styles.tabLabel, { color: iconColor }]}>{label}</Text>
+            {IconComponent ? (
+              IconComponent({
+                color: isFocused ? "#000000" : "#DBE1E3",
+              })
+            ) : (
+              <Text style={{ color: "red" }}>Icon Missing</Text> // ✅ Fallback for missing icons
+            )}
+            {/* <Text style={{ color: isFocused ? "#DBE1E3" : "#02196F" }}>
+              {label}
+            </Text> */}
           </PlatformPressable>
         );
       })}
-    </BlurView>
+    </View>
   );
-};
+}
+
+export default MyTabBar;
 
 const styles = StyleSheet.create({
   tabBar: {
+    // display: "flex",
     flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
     position: "absolute",
-    bottom: 32,
-    left: 16,
-    right: 16,
-    padding: 16,
-    borderRadius: 100,
+    bottom: 25,
+    padding: 12,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 50,
     overflow: "hidden",
-    backgroundColor: "rgba(255, 255, 255, 0.2)",
-    elevation: 5,
+    backgroundColor: "rgba(255, 255, 255, 0.2)", // Transparent white
+    elevation: 5, // Adds depth on Android
+    shadowOpacity: 0.1, // Subtle shadow for iOS
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.1,
     shadowRadius: 8,
+    width: "80%",
+    height: 80,
+    alignSelf: "center",
   },
+
   tabItem: {
-    flex: 1,
     alignItems: "center",
     justifyContent: "center",
     paddingVertical: 10,
-    marginHorizontal: 5,
-    borderRadius: 100,
-    overflow: "hidden",
+    paddingHorizontal: 10,
+    marginHorizontal: 15,
+    borderRadius: 50,
     backgroundColor: "transparent",
+    width: 50, // Consistent width
+    height: 50, // Consistent height
   },
+
   activeTab: {
-    backgroundColor: "#000",
-  },
-  tabLabel: {
-    fontSize: 14,
-    fontWeight: "600",
+    backgroundColor: "rgba(255, 255, 255, 0.8)", // Visual difference
+    elevation: 5,
+    shadowOpacity: 0.2,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 4 },
+    shadowRadius: 8,
+    // No dimension changes!
   },
 });
-
-export default TabBar;
