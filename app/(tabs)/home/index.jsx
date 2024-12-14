@@ -16,7 +16,7 @@ import list from "../../../assets/Mock/products";
 
 export default function Home() {
   return (
-    <SafeAreaView className="flex-1 bg-[#000000]">
+    <SafeAreaView className="flex-1 text-white bg-[#000000]" headers>
       <StatusBar barStyle="light-content" />
       <ScrollView>
         <View className="flex flex-col justify-start w-screen h-full px-3 pt-2 gap-5">
@@ -80,13 +80,26 @@ export default function Home() {
             <FlatList
               data={list}
               numColumns={2}
-              // vertical // Enables horizontal scrolling
               keyExtractor={(item, index) => index.toString()} // Unique key for each item
               contentContainerStyle={styles.contentContainer} // Styles for list items
               renderItem={({ item }) => (
                 <View style={styles.itemContainer}>
                   <Image source={item.image} style={styles.image} />
-                  <Text style={styles.text}>{item.name}</Text>
+
+                  <View className="flex flex-col gap-2 p-2">
+                    <Text className="text-white text-[1.2rem] font-bold leading-relaxed Tantor">
+                      {item.name}
+                    </Text>
+                    <Text className="text-white text-[0.9rem] font-semibold Tantor">
+                      {item.description}
+                    </Text>
+                    <Text
+                      style={{ fontFamily: "Modak" }}
+                      className="text-[#bbde82] text-[1.5rem] Tantor"
+                    >
+                      ${item.price}
+                    </Text>
+                  </View>
                 </View>
               )}
             />
@@ -104,11 +117,12 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     width: "100%",
     gap: 20,
+    marginBottom: 50,
+    zIndex: -1,
   },
   itemContainer: {
-    alignItems: "center",
+    alignItems: "start",
     justifyContent: "space-between",
-    backgroundColor: " rgba(255, 255, 255, 0.3)",
     margin: 10,
     marginHorizontal: 15,
     borderRadius: 16,
