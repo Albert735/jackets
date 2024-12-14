@@ -4,8 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 // import { Button } from "react-native";
 import { Link } from "expo-router";
 import { TouchableOpacity } from "react-native";
-
-
+import { LinearGradient } from "expo-linear-gradient";
 
 const backgroundImage = require("../assets/images/blujacket Background Removed.png");
 

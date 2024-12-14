@@ -99,6 +99,7 @@ export default function Home() {
 
 const styles = StyleSheet.create({
   contentContainer: {
+    flex: 1,
     alignItems: "center",
     justifyContent: "space-between",
     width: "100%",
@@ -106,9 +107,9 @@ const styles = StyleSheet.create({
   },
   itemContainer: {
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-between",
     backgroundColor: " rgba(255, 255, 255, 0.3)",
-    margin: 8,
+    margin: 10,
     marginHorizontal: 15,
     borderRadius: 16,
   },
