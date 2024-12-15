@@ -17,9 +17,23 @@ export default function DetailsPage() {
           resizeMode="cover"
         />
       </View>
-      {/* <Text className="text-white text-[1.2rem] Tantor leading-relaxed font-normal text-justify">
-        Product ID: {id}
-      </Text> */}
+      <View className="flex flex-col items-center justify-center  rounded-t-[4.5rem] absolute bottom-0 w-screen h-[25rem]  bg-white p-3   blur-lg">
+        <Text
+          style={{ fontFamily: "Modak" }}
+          className="text-black text-[2rem]  font-bold "
+        >
+          {item.name}
+        </Text>
+        <Text className="text-black text-[0.9rem] Tantor font-bold">
+          {item.description}
+        </Text>
+        <Text
+          style={{ fontFamily: "Modak" }}
+          className="text-black text-[2.5rem] Tantor font-bold"
+        >
+          ${item.price}
+        </Text>
+      </View>
     </View>
   );
 }
