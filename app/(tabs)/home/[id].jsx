@@ -17,22 +17,39 @@ export default function DetailsPage() {
           resizeMode="cover"
         />
       </View>
-      <View className="flex flex-col items-center justify-center  rounded-t-[4.5rem] absolute bottom-0 w-screen h-[25rem]  bg-white p-3   blur-lg">
-        <Text
-          style={{ fontFamily: "Modak" }}
-          className="text-black text-[2rem]  font-bold "
-        >
-          {item.name}
-        </Text>
-        <Text className="text-black text-[0.9rem] Tantor font-bold">
-          {item.description}
-        </Text>
-        <Text
-          style={{ fontFamily: "Modak" }}
-          className="text-black text-[2.5rem] Tantor font-bold"
-        >
-          ${item.price}
-        </Text>
+      <View className="flex flex-col items-center justify-start gap-5  rounded-t-[4.5rem] absolute bottom-0 w-screen h-[25rem]  bg-black/40 opacity-80 p-3 blur-xl">
+        <View className="flex flex-col items-center justify-center gap-2">
+          <Text
+            style={{ fontFamily: "Modak" }}
+            className="text-white text-[2rem]  font-bold "
+          >
+            {item.name}
+          </Text>
+          <Text className="text-white text-[0.9rem] Tantor font-bold">
+            {item.description}
+          </Text>
+          <Text
+            style={{ fontFamily: "Modak" }}
+            className="text-white text-[2.5rem] Tantor font-bold"
+          >
+            ${item.price}
+          </Text>
+        </View>
+
+        <View className="flex flex-row items-center justify-center w-[80%] gap-5 ">
+          <Text className="text-black text-[1.2rem] font-bold bg-white/30 rounded-full p-5 w-[4rem] h-[4rem] text-center">
+            XS
+          </Text>
+          <Text className="text-black text-[1.2rem] font-bold bg-white/30 rounded-full p-5 w-[4rem] h-[4rem] text-center">
+            S
+          </Text>
+          <Text className="text-black text-[1.2rem] font-bold bg-white/30 rounded-full p-5 w-[4rem] h-[4rem] text-center">
+            M
+          </Text>
+          <Text className="text-black text-[1.2rem] font-bold bg-white/30 rounded-full p-5 w-[4rem] h-[4rem] text-center">
+            L
+          </Text>
+        </View>
       </View>
     </View>
   );

@@ -4,12 +4,12 @@ export default function Layout() {
   return (
     <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen
-        name="(tabs)"
+        name="index"
         options={{ headerShown: false }} // This points to the folder "(tabs)"
       />
       <Stack.Screen
-        name="home/[id]"
-        options={{ headerShown: true }} // Dynamic route for specific home items
+        name="[id]"
+        options={{ headerShown: false }} // Dynamic route for specific home items
       />
     </Stack>
   );

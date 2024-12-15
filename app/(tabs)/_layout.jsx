@@ -39,6 +39,7 @@ export default function _layout() {
           headerShown: false,
         }}
       />
+      {/* <Tabs.Screen name="[id]" options={{ headerShown: false }} /> */}
     </Tabs>
   );
 }
