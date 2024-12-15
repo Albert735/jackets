@@ -1,7 +1,6 @@
 import {
   View,
   Text,
-  SafeAreaView,
   Image,
   FlatList,
   ScrollView,
@@ -10,14 +9,14 @@ import {
 } from "react-native";
 import React from "react";
 import Octicons from "@expo/vector-icons/Octicons";
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
 import list from "../../../assets/Mock/products";
 
 export default function Home() {
+  const router = useRouter();
   return (
-    <SafeAreaView className="flex-1 text-white bg-[#000000]" headers>
-      <StatusBar barStyle="light-content" />
+    <View className="flex-1 text-white bg-[#000000] pt-16">
       <ScrollView>
         <View className="flex flex-col justify-start w-screen h-full px-3 pt-2 gap-5">
           {/* //Browse Collection */}
@@ -39,10 +38,9 @@ export default function Home() {
             start={{ x: 1, y: 1.5 }}
             end={{ x: 0, y: 0 }}
             style={{ borderRadius: 20 }}
-            // className="flex flex-row items-center justify-between w-full h-[16rem] rounded-[1.8rem] pl-4"
           >
             <View className="flex flex-row items-center justify-between w-full h-[16rem] rounded-[1.8rem] pl-4">
-              <View className="">
+              <View>
                 <Text
                   style={{ fontFamily: "Modak" }}
                   className="text-[#bbde82] text-[3rem] Tantor"
@@ -59,7 +57,7 @@ export default function Home() {
               <View className="h-[16rem] w-full">
                 <Image
                   source={require("../../../assets/images/Digital Fashion Background Removed.png")}
-                  className="w-[14rem] h-[16rem] "
+                  className="w-[14rem] h-[16rem]"
                   resizeMode="cover"
                 />
               </View>
@@ -67,7 +65,7 @@ export default function Home() {
           </LinearGradient>
 
           <View className="flex flex-col gap-3">
-            {/* list V iew */}
+            {/* list View */}
             <View className="flex flex-row items-center justify-between">
               <Text className="text-white text-[1.5rem] Tantor font-bold">
                 Popular
@@ -80,11 +78,24 @@ export default function Home() {
             <FlatList
               data={list}
               numColumns={2}
-              keyExtractor={(item, index) => index.toString()} // Unique key for each item
+              keyExtractor={(item, index) => item.id.toString()} // Unique key for each item
               contentContainerStyle={styles.contentContainer} // Styles for list items
               renderItem={({ item }) => (
                 <View style={styles.itemContainer}>
-                  <Image source={item.image} style={styles.image} />
+                  <Link href={`/home/${item.id}`}>
+                    <Image
+                      source={item.image}
+                      style={styles.image}
+                      onError={() => console.log("Image failed to load")}
+                    />
+                  </Link>
+
+                  <Octicons
+                    name="heart"
+                    size={20}
+                    color={"#ffffff"}
+                    className="absolute top-2 right-2 bg-white/30 rounded-full p-3 opacity-80 bg blur-lg"
+                  />
 
                   <View className="flex flex-col gap-2 p-2">
                     <Text className="text-white text-[1.2rem] font-bold leading-relaxed Tantor">
@@ -106,7 +117,7 @@ export default function Home() {
           </View>
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }
 
@@ -117,8 +128,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     width: "100%",
     gap: 20,
-    marginBottom: 50,
-    zIndex: -1,
+    marginBottom: 90,
   },
   itemContainer: {
     alignItems: "start",

@@ -13,12 +13,13 @@ export default function _layout() {
     return null;
   }
   return (
-    <Stack>
+    <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen
         name="index"
         options={{ headerShown: false, title: "index" }}
       />
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack.Screen name="index/[id]" options={{ headerShown: false }} />
     </Stack>
   );
 }

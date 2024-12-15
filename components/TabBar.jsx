@@ -82,7 +82,7 @@ export default MyTabBar;
 const styles = StyleSheet.create({
   tabBar: {
     // display: "flex",
-    flexDirection: "row",
+    flexDirection: "row-reverse",
     position: "absolute",
     bottom: 25,
     padding: 12,
