@@ -8,7 +8,7 @@ export default function Layout() {
         options={{ headerShown: false }} // This points to the folder "(tabs)"
       />
       <Stack.Screen
-        name="[id]"
+        name="details/[id]"
         options={{ headerShown: false }} // Dynamic route for specific home items
       />
     </Stack>

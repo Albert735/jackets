@@ -8,7 +8,7 @@ export default function _layout() {
       tabBar={(props) => <TabBar {...props} />}
     >
       <Tabs.Screen
-        name="home/index"
+        name="home"
         options={{
           tabBarLabel: "Home",
           headerTitle: "Home",
@@ -39,7 +39,6 @@ export default function _layout() {
           headerShown: false,
         }}
       />
-      {/* <Tabs.Screen name="[id]" options={{ headerShown: false }} /> */}
     </Tabs>
   );
 }
