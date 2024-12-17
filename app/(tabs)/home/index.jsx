@@ -14,9 +14,11 @@ export default function Home() {
       {/* //Browse Collection */}
       <View className="flex flex-row items-center justify-between">
         <View>
-          <Text className="text-white text-[1.5rem] Tantor font-bold">
-            Browse Collection
-          </Text>
+          <Link href="/home/details/AllCollections">
+            <Text className="text-white text-[1.5rem] Tantor font-bold">
+              Browse Collection
+            </Text>
+          </Link>
         </View>
         <Link href="/favorite">
           <View className="flex flex-row items-center justify-center bg-white/30 rounded-full p-3 opacity-80 bg blur-lg">
@@ -25,45 +27,50 @@ export default function Home() {
         </Link>
       </View>
       {/* //Browse Card */}
-      <LinearGradient
-        colors={["#bbde82", "#7e9b53"]}
-        start={{ x: 1, y: 1.5 }}
-        end={{ x: 0, y: 0 }}
-        style={{ borderRadius: 20 }}
-      >
-        <View className="flex flex-row items-center justify-between w-full h-[16rem] rounded-[1.8rem] pl-4">
-          <View>
-            <Text
-              style={{ fontFamily: "Modak" }}
-              className="text-[#bbde82] text-[3rem] Tantor"
-            >
-              Weekend
-            </Text>
-            <Text
-              style={{ fontFamily: "Modak" }}
-              className="text-[#bbde82] text-[3rem] Tantor"
-            >
-              Vibes
-            </Text>
+      <Link href="/home/details/AllCollections">
+        <LinearGradient
+          colors={["#bbde82", "#7e9b53"]}
+          start={{ x: 1, y: 1.5 }}
+          end={{ x: 0, y: 0 }}
+          style={{ borderRadius: 20 }}
+        >
+          <View className="flex flex-row items-center justify-between w-full h-[16rem] rounded-[1.8rem] pl-4">
+            <View>
+              <Text
+                style={{ fontFamily: "Modak" }}
+                className="text-[#bbde82] text-[3rem] Tantor"
+              >
+                Weekend
+              </Text>
+              <Text
+                style={{ fontFamily: "Modak" }}
+                className="text-[#bbde82] text-[3rem] Tantor"
+              >
+                Vibes
+              </Text>
+            </View>
+            <View className="h-[16rem] w-full">
+              <Image
+                source={require("../../../assets/images/Digital Fashion Background Removed.png")}
+                className="w-[14rem] h-[16rem]"
+                resizeMode="cover"
+              />
+            </View>
           </View>
-          <View className="h-[16rem] w-full">
-            <Image
-              source={require("../../../assets/images/Digital Fashion Background Removed.png")}
-              className="w-[14rem] h-[16rem]"
-              resizeMode="cover"
-            />
-          </View>
-        </View>
-      </LinearGradient>
+        </LinearGradient>
+      </Link>
       <View className="flex flex-col gap-3">
         {/* list View */}
         <View className="flex flex-row items-center justify-between">
           <Text className="text-white text-[1.5rem] Tantor font-bold">
             Popular
           </Text>
-          <Text className="text-white text-[1.2rem] Tantor leading-relaxed font-normal text-justify">
-            Show All
-          </Text>
+
+          <Link href="/home/details/AllProducts">
+            <Text className="text-white text-[1.2rem] Tantor leading-relaxed font-normal text-justify">
+              Show All
+            </Text>
+          </Link>
         </View>
       </View>
     </View>
