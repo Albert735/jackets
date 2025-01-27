@@ -8,7 +8,7 @@ export default function _layout() {
       tabBar={(props) => <TabBar {...props} />}
     >
       <Tabs.Screen
-        name="home"
+        name="home/index"
         options={{
           tabBarLabel: "Home",
           headerTitle: "Home",
